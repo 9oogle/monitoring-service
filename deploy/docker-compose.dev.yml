@@ -1,0 +1,21 @@
+services:
+  monitoring-service:
+    image: ${IMAGE}:${IMAGE_TAG:-latest}
+    env_file: .env
+    environment:
+      SPRING_PROFILES_ACTIVE: dev
+    ports:
+      - "11000:11000"
+    volumes:
+      - /home/deploy/ssl/kafka.truststore.jks:/app/ssl/kafka.truststore.jks:ro
+      - monitoring-logs:/app/logs
+    restart: unless-stopped
+    networks:
+      - goggles-network
+
+volumes:
+  monitoring-logs:
+
+networks:
+  goggles-network:
+    external: true

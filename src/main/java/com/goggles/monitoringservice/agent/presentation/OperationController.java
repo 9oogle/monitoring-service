@@ -20,8 +20,12 @@ import reactor.core.publisher.Mono;
 @RequestMapping("/api/v1/operation")
 public class OperationController {
   private final ObjectMapper objectMapper;
-  @Value("${LOKI_HOST}") String lokiHost;
-  @Value("${GRAFANA_HOST}") String grafanaHost;
+
+  @Value("${LOKI_HOST}")
+  String lokiHost;
+
+  @Value("${GRAFANA_HOST}")
+  String grafanaHost;
 
   @PostMapping(value = "/interactive", consumes = "application/x-www-form-urlencoded")
   public Mono<Void> handleInteractive(@RequestParam("payload") String payloadString) {
@@ -40,7 +44,9 @@ public class OperationController {
                 WebClient.create()
                     .get()
                     .uri(
-                        "http://" + lokiHost + "/loki/api/v1/query_range"
+                        "http://"
+                            + lokiHost
+                            + "/loki/api/v1/query_range"
                             + "?query="
                             + URLEncoder.encode(query, StandardCharsets.UTF_8)
                             + "&limit=20")

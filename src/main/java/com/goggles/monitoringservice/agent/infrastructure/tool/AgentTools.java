@@ -21,7 +21,7 @@ import reactor.netty.resources.ConnectionProvider;
 public class AgentTools {
   private final WebClient lokiWebClient;
 
-  public AgentTools(  @Value("${LOKI_HOST}") String lokiHost) {
+  public AgentTools(@Value("${LOKI_HOST}") String lokiHost) {
 
     ConnectionProvider provider =
         ConnectionProvider.builder("monitoring-pool")
