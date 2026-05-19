@@ -29,8 +29,6 @@ prompt:
   version: 1.0.0
 
 monitoring:
-  loki:
-    url: http://localhost:3100
   slack:
     url: ${SLACK_WEBHOOK_URL}
 
