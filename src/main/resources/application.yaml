@@ -1,0 +1,43 @@
+spring:
+  application:
+    name: monitoring-service
+  profiles:
+    active: ${SPRING_PROFILES_ACTIVE:local}
+    group:
+      local: "local,topics"
+      dev: "dev,topics"
+      prod: "prod,kafka,topics"
+  config:
+    import:
+      - "optional:configserver:"
+  cloud:
+    config:
+      discovery:
+        enabled: true
+        service-id: config-server
+  ai:
+    vertex:
+      ai:
+        gemini:
+          project-id: ${GOOGLE_CLOUD_PROJECT_ID}
+          location: us-central1
+
+prompt:
+  model-name: gemini-2.5-flash-lite
+  temperature: 0.2
+  max-tokens: 2000
+  version: 1.0.0
+
+monitoring:
+  loki:
+    url: http://localhost:3100
+  slack:
+    url: ${SLACK_WEBHOOK_URL}
+
+eureka:
+  client:
+    service-url:
+      defaultZone: ${EUREKA_CLIENT_SERVICEURL_DEFAULTZONE:http://localhost:9001/eureka/}
+
+server:
+  port: 11000
