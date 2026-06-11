@@ -2,9 +2,11 @@ package com.goggles.monitoringservice;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
 
 @SpringBootTest
-class MentoringserviceApplicationTests {
+@ActiveProfiles("test")
+class MonitoringServiceApplicationTests {
 
   @Test
   void contextLoads() {}

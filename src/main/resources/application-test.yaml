@@ -1,0 +1,23 @@
+spring:
+  ai:
+    vertex:
+      ai:
+        gemini:
+          project-id: test-project
+          location: us-central1
+
+prompt:
+  model-name: gemini-2.5-flash-lite
+  temperature: 0.2
+  max-tokens: 2000
+  version: 1.0.0
+
+monitoring:
+  slack:
+    url: https://hooks.slack.com/test/dummy-webhook
+
+server:
+  port: 11000
+
+LOKI_HOST: http://localhost:3100
+GRAFANA_HOST: http://localhost:3000
